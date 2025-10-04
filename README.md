@@ -44,6 +44,8 @@ For the boosters, head over to [the config](https://www.notion.so/Config-Options
 
 ## Player Help
 
+[The Boosters](https://www.notion.so/The-Boosters-28257e0d4afd80cfb365ffc8b7a5fb94?pvs=21)
+
 [Config Options](https://www.notion.so/Config-Options-27a57e0d4afd8049a5c3e9674906eee6?pvs=21)
 
 ## Addon Dev Help
