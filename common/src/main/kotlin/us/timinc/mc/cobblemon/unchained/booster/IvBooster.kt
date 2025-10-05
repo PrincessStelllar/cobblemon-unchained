@@ -32,14 +32,7 @@ object IvBooster : AbstractBooster() {
 
         override fun roll(): Boolean = true
 
-        override fun test(): Boolean {
-            if (unlockedBoost < 1) {
-                debug("Did not unlock any perfected IVs.")
-                return false
-            }
-
-            return true
-        }
+        override fun test(): Boolean = true
 
         override fun boost() {
             val boostedIvs = unlockedBoost.toInt()

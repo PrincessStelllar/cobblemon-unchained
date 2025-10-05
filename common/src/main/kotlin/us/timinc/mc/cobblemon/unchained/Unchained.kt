@@ -16,6 +16,7 @@ import us.timinc.mc.cobblemon.unchained.config.HiddenBoosterConfig
 import us.timinc.mc.cobblemon.unchained.config.IvBoosterConfig
 import us.timinc.mc.cobblemon.unchained.config.ShinyBoosterConfig
 import us.timinc.mc.cobblemon.unchained.event.BoostApplication
+import us.timinc.mc.cobblemon.unchained.event.BoostCalculation
 
 const val MOD_ID: String = "unchained"
 
@@ -68,6 +69,9 @@ object Unchained : AbstractMod<Unchained.UnchainedConfig>(MOD_ID, UnchainedConfi
 
         @JvmField
         val BOOST_APPLICATION_POST = EventObservable<BoostApplication.Post>()
+
+        @JvmField
+        val BOOST_CALCULATION = EventObservable<BoostCalculation>()
     }
 
     init {
