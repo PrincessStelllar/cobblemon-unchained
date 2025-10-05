@@ -1,6 +1,6 @@
 # Unchained
 
-v1.6.1-1.4
+v1.6.1-1.5
 
 [Modrinth](https://modrinth.com/mod/cobblemon-unchained)
 
@@ -40,23 +40,23 @@ v1.6.1-1.4
 
 ## Testing
 
-For the boosters, head over to [the config](https://www.notion.so/Config-Options-27a57e0d4afd8049a5c3e9674906eee6?pvs=21) for the context you would like to test; for this example, we’re going to use the IV booster in a spawning context. Change the `debug` property to `true`, run the game, join a world. Run `/cobbled_counter set <player> capture streak <species> <form> 30`. Replace `<player>`  with your player name, `<species>` and `<form>` with something that spawns a lot nearby (for example, something like `/cobbled_counter set timinc capture streak wooloo normal 30`). Wait for the given Pokémon to spawn, and you should see Unchained's IV booster give feedback about the IVs that were perfected. While waiting, you should have also seen other debug lines go off describing how they failed.
+For the boosters, head over to [the config](https://www.notion.so/Config-Options-28357e0d4afd81e7b49ec62950b3830b?pvs=21) for the context you would like to test; for this example, we’re going to use the IV booster in a spawning context. Change the `debug` property to `true`, run the game, join a world. Run `/cobbled_counter set <player> capture streak <species> <form> 30`. Replace `<player>`  with your player name, `<species>` and `<form>` with something that spawns a lot nearby (for example, something like `/cobbled_counter set timinc capture streak wooloo normal 30`). Wait for the given Pokémon to spawn, and you should see Unchained's IV booster give feedback about the IVs that were perfected. While waiting, you should have also seen other debug lines go off describing how they failed.
 
 ## Player Help
 
-[The Boosters](https://www.notion.so/The-Boosters-28257e0d4afd80cfb365ffc8b7a5fb94?pvs=21)
+[The Boosters](https://www.notion.so/The-Boosters-28357e0d4afd81d1b4b6f69f4ea658bf?pvs=21)
 
-[Config Options](https://www.notion.so/Config-Options-27a57e0d4afd8049a5c3e9674906eee6?pvs=21)
+[Config Options](https://www.notion.so/Config-Options-28357e0d4afd81e7b49ec62950b3830b?pvs=21)
 
 ## Addon Dev Help
 
 ### Resource Pack Help
 
-[Translations](https://www.notion.so/Translations-27a57e0d4afd80359d3ec1bbbc1b1472?pvs=21)
+[Translations](https://www.notion.so/Translations-28357e0d4afd8125bb04ea40b2eab54d?pvs=21)
 
 ## Mod Dev Help
 
-[Events](https://www.notion.so/Events-27a57e0d4afd80f387cceba0b6e45437?pvs=21)
+[Events](https://www.notion.so/Events-28357e0d4afd8167805ee42b1e5a70d5?pvs=21)
 
 ## Known Issues
 
