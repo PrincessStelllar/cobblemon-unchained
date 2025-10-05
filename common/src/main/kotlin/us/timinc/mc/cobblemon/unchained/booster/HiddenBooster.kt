@@ -29,11 +29,6 @@ object HiddenBooster : AbstractBooster() {
         override fun roll(): Boolean {
             val totalMarbles = config.marbles
 
-            if (unlockedBoost == 0F) {
-                debug("${player.name.string} hasn't unlocked a hidden ability chance")
-                return false
-            }
-
             val roll = nextFloat() * totalMarbles
             val successfulRoll = roll < unlockedBoost
 
@@ -45,11 +40,6 @@ object HiddenBooster : AbstractBooster() {
         }
 
         override fun test(): Boolean {
-            if (unlockedBoost < 0) {
-                debug("${player.name.string} has not unlocked a hidden boost.")
-                return false
-            }
-
             if (!pokemon.hasHiddenAbility) {
                 debug("${species.resourceIdentifier}|${form.name} doesn't have hidden ability.")
                 return false
