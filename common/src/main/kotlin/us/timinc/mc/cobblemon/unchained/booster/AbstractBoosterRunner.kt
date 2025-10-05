@@ -8,6 +8,7 @@ import us.timinc.mc.cobblemon.timcore.PokemonRepresentation
 import us.timinc.mc.cobblemon.unchained.Unchained
 import us.timinc.mc.cobblemon.unchained.config.AbstractBoosterConfig
 import us.timinc.mc.cobblemon.unchained.event.BoostApplication
+import us.timinc.mc.cobblemon.unchained.event.BoostCalculation
 
 abstract class AbstractBoosterRunner<T : AbstractBoosterConfig>(
     val player: ServerPlayer,
@@ -21,13 +22,34 @@ abstract class AbstractBoosterRunner<T : AbstractBoosterConfig>(
 
     val species = pokemon.species!!
     val form = pokemon.form ?: species.standardForm
-    val unlockedBoost
-        get() = config.getPointsFromThreshold(player, species.resourceIdentifier, form.name)
+    private var unlockedBoostOverride: Float? = null
+    var unlockedBoost: Float
+        get() = if (unlockedBoostOverride != null) unlockedBoostOverride!! else config.getPointsFromThreshold(
+            player,
+            species.resourceIdentifier,
+            form.name
+        )
+        set(value) {
+            unlockedBoostOverride = value
+        }
 
     fun runThrough(): Boolean {
         if (!config.enabled) return false
+        debug("Running ${config.key} booster for ${species}|${form.name}")
+
         if (!LimitedList.PokemonMatcherList.matchesList(pokemon.getPokemon(), config.whitelist, config.blacklist)) {
             debug("${species.name}|${form.name} is prohibited by the whitelist/blacklist.")
+            return false
+        }
+
+        Unchained.Events.BOOST_CALCULATION.post(
+            BoostCalculation(config.key, pokemon, player, unlockedBoost)
+        ) { evt ->
+            unlockedBoost = evt.unlockedBoost
+        }
+
+        if (unlockedBoost == 0F) {
+            debug("No boost unlocked")
             return false
         }
 
