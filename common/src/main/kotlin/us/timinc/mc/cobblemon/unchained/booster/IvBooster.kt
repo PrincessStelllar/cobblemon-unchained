@@ -92,8 +92,8 @@ object IvBooster : AbstractBooster() {
         PlatformEvents.SERVER_STARTED.subscribe(Priority.LOWEST) { _ ->
             fishingSpawner.influences.add(IvBoosterInfluence(Unchained.ivFishBooster))
         }
-        CobblemonEvents.HATCH_EGG_PRE.subscribe(Priority.HIGHEST, IvEggHandler::handle)
-        CobblemonEvents.FOSSIL_REVIVED.subscribe(Priority.HIGHEST, IvFossilHandler::handle)
-        CobblemonEvents.POKEMON_CAPTURED.subscribe(Priority.HIGHEST, IvCaptureHandler::handle)
+        CobblemonEvents.HATCH_EGG_PRE.subscribe(Priority.LOWEST, IvEggHandler::handle)
+        CobblemonEvents.FOSSIL_REVIVED.subscribe(Priority.LOWEST, IvFossilHandler::handle)
+        CobblemonEvents.POKEMON_CAPTURED.subscribe(Priority.LOWEST, IvCaptureHandler::handle)
     }
 }

@@ -120,8 +120,8 @@ object ShinyBooster : AbstractBooster() {
         PlatformEvents.SERVER_STARTED.subscribe(Priority.LOWEST) { _ ->
             fishingSpawner.influences.add(ShinyBoosterInfluence(Unchained.shinyFishBooster))
         }
-        CobblemonEvents.HATCH_EGG_PRE.subscribe(Priority.HIGHEST, ShinyEggHandler::handle)
-        CobblemonEvents.FOSSIL_REVIVED.subscribe(Priority.HIGHEST, ShinyFossilHandler::handle)
-        CobblemonEvents.POKEMON_CAPTURED.subscribe(Priority.HIGHEST, ShinyCaptureHandler::handle)
+        CobblemonEvents.HATCH_EGG_PRE.subscribe(Priority.LOWEST, ShinyEggHandler::handle)
+        CobblemonEvents.FOSSIL_REVIVED.subscribe(Priority.LOWEST, ShinyFossilHandler::handle)
+        CobblemonEvents.POKEMON_CAPTURED.subscribe(Priority.LOWEST, ShinyCaptureHandler::handle)
     }
 }
