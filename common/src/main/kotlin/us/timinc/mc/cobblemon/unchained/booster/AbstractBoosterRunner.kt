@@ -22,16 +22,8 @@ abstract class AbstractBoosterRunner<T : AbstractBoosterConfig>(
 
     val species = pokemon.species!!
     val form = pokemon.form ?: species.standardForm
-    private var unlockedBoostOverride: Float? = null
-    var unlockedBoost: Float
-        get() = if (unlockedBoostOverride != null) unlockedBoostOverride!! else config.getPointsFromThreshold(
-            player,
-            species.resourceIdentifier,
-            form.name
-        )
-        set(value) {
-            unlockedBoostOverride = value
-        }
+    val unlockedBoost: Float
+        get() = config.getPointsFromThreshold(player, species.resourceIdentifier, form.name)
 
     fun runThrough(): Boolean {
         if (!config.enabled) return false
@@ -42,13 +34,19 @@ abstract class AbstractBoosterRunner<T : AbstractBoosterConfig>(
             return false
         }
 
+        var usedUnlockedBoost: Float = unlockedBoost
         Unchained.Events.BOOST_CALCULATION.post(
             BoostCalculation(config.key, pokemon, player, unlockedBoost)
         ) { evt ->
-            unlockedBoost = evt.unlockedBoost
+            if (evt.unlockedBoost != usedUnlockedBoost) {
+                usedUnlockedBoost = evt.unlockedBoost
+                debug("Unlocked boost set to $usedUnlockedBoost by an event listener.")
+            } else {
+                debug("Using boost of $usedUnlockedBoost")
+            }
         }
 
-        if (unlockedBoost == 0F) {
+        if (usedUnlockedBoost == 0F) {
             debug("No boost unlocked")
             return false
         }
@@ -58,14 +56,11 @@ abstract class AbstractBoosterRunner<T : AbstractBoosterConfig>(
 
         var passedEvent = false
         val preEvent = BoostApplication.Pre(config.key, pokemon, player, passedRoll, passedTest)
-        Unchained.Events.BOOST_APPLICATION_PRE.postThen(
-            preEvent,
-            {
-                passedEvent = false
-            }, {
-                passedEvent = true
-            }
-        )
+        Unchained.Events.BOOST_APPLICATION_PRE.postThen(preEvent, {
+            passedEvent = false
+        }, {
+            passedEvent = true
+        })
 
         if ((!passedTest && !preEvent.ignoreTest) || (!passedRoll && !preEvent.ignoreRoll) || !passedEvent) return false
 

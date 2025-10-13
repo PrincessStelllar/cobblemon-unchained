@@ -60,7 +60,7 @@ For the boosters, head over to [the config](https://www.notion.so/Config-Options
 
 ## Known Issues
 
-- None. Why? Who’s asking? 👀
+- v1.6.1-1.5.0 had set the event listeners to high priority, allowing other mods to override the results; notably running into [Fossil Tweaks](https://www.notion.so/Fossil-Tweaks-21d57e0d4afd8072ad0dcccb83f9fe2a?pvs=21)’s naive shiny rolling. v1.6.1-1.5.1 fixes this by deprioritizing the event listeners so they get last say.
 
 ## Roadmap
 
