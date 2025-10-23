@@ -15,15 +15,15 @@ v1.6.1-1.5
 ## Features
 
 - Unlock bonuses to:
-  - Hidden abilities
-  - Perfect IVs
-  - Shininess
+    - Hidden abilities
+    - Perfect IVs
+    - Shininess
 - Unlock these bonuses when a Pokémon:
-  - Spawns in the wild
-  - Is fished up by a player
-  - Hatches from an egg
-  - Is revived from a fossil
-  - Is captured by a player
+    - Spawns in the wild
+    - Is fished up by a player
+    - Hatches from an egg
+    - Is revived from a fossil
+    - Is captured by a player
 - All bonuses are optional and highly configurable.
 - Use *every* stat from the [Counter](https://www.notion.so/Counter-21d57e0d4afd80d0815fc97b89368998?pvs=21) mod
 - Smart spawn reservation system prevents steal attempts in multiplayer
@@ -61,6 +61,7 @@ For the boosters, head over to [the config](https://www.notion.so/Config-Options
 ## Known Issues
 
 - v1.6.1-1.5.0 had set the event listeners to high priority, allowing other mods to override the results; notably running into [Fossil Tweaks](https://www.notion.so/Fossil-Tweaks-21d57e0d4afd8072ad0dcccb83f9fe2a?pvs=21)’s naive shiny rolling. v1.6.1-1.5.1 fixes this by deprioritizing the event listeners so they get last say.
+- v1.6.1-1.5.0 - v1.6.1-1.5.1 didn’t always play well with form name translations, so I’ve reverted them to the direct form name in v1.6.1-1.5.2.
 
 ## Roadmap
 
