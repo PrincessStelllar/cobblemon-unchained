@@ -58,7 +58,7 @@ object Unchained : AbstractMod<Unchained.UnchainedConfig>(MOD_ID, UnchainedConfi
     object TranslationComponents {
         fun notify(type: String, species: Species, form: FormData): MutableComponent = Component.translatable(
             "unchained.notification.$type",
-            Component.translatable("cobblemon.ui.pokedex.info.form.${form.name.lowercase()}"),
+            form.name,
             species.translatedName,
         )
     }
