@@ -62,6 +62,7 @@ For the boosters, head over to [the config](https://www.notion.so/Config-Options
 
 - v1.6.1-1.5.0 had set the event listeners to high priority, allowing other mods to override the results; notably running into [Fossil Tweaks](https://www.notion.so/Fossil-Tweaks-21d57e0d4afd8072ad0dcccb83f9fe2a?pvs=21)’s naive shiny rolling. v1.6.1-1.5.1 fixes this by deprioritizing the event listeners so they get last say.
 - v1.6.1-1.5.0 - v1.6.1-1.5.1 didn’t always play well with form name translations, so I’ve reverted them to the direct form name in v1.6.1-1.5.2.
+- v1.6.1-1.5.0 - v1.6.1-1.5.2 would stall out if you tried to use the reserve a spawning Pokémon for the player it spawned on feature. v1.6.1-1.5.3 fixes this.
 
 ## Roadmap
 
