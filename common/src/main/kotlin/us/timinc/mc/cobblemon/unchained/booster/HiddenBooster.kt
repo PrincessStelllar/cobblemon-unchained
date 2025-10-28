@@ -67,7 +67,7 @@ object HiddenBooster : AbstractBooster() {
                 pokemonRep,
                 config
             ) {
-                action.entity.await().pokemon.reserveFor(player)
+                action.entity.subscribe { it.pokemon.reserveFor(player) }
             }.runThrough()
         }
     }

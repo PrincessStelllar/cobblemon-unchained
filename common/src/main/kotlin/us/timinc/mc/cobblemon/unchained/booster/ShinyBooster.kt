@@ -74,7 +74,7 @@ object ShinyBooster : AbstractBooster() {
             val player = player ?: action.ctx.cause.entity as? ServerPlayer ?: return
 
             Runner(player, PokemonRepresentation.FromProperties(action.props), config) {
-                action.entity.await().pokemon.reserveFor(player)
+                action.entity.subscribe { it.pokemon.reserveFor(player) }
             }.runThrough()
         }
     }
