@@ -1,6 +1,6 @@
 # Unchained
 
-v1.6.1-1.5
+v1.7.0-1.6
 
 [Modrinth](https://modrinth.com/mod/cobblemon-unchained)
 
@@ -40,29 +40,23 @@ v1.6.1-1.5
 
 ## Testing
 
-For the boosters, head over to [the config](https://www.notion.so/Config-Options-28357e0d4afd81e7b49ec62950b3830b?pvs=21) for the context you would like to test; for this example, we’re going to use the IV booster in a spawning context. Change the `debug` property to `true`, run the game, join a world. Run `/cobbled_counter set <player> capture streak <species> <form> 30`. Replace `<player>`  with your player name, `<species>` and `<form>` with something that spawns a lot nearby (for example, something like `/cobbled_counter set timinc capture streak wooloo normal 30`). Wait for the given Pokémon to spawn, and you should see Unchained's IV booster give feedback about the IVs that were perfected. While waiting, you should have also seen other debug lines go off describing how they failed.
+For the boosters, head over to [the config](https://www.notion.so/Config-Options-2b657e0d4afd8170a34eddd790195168?pvs=21) for the context you would like to test; for this example, we’re going to use the IV booster in a spawning context. Change the `debug` property to `true`, run the game, join a world. Run `/cobbled_counter set <player> capture streak <species> <form> 30`. Replace `<player>`  with your player name, `<species>` and `<form>` with something that spawns a lot nearby (for example, something like `/cobbled_counter set timinc capture streak wooloo normal 30`). Wait for the given Pokémon to spawn, and you should see Unchained's IV booster give feedback about the IVs that were perfected. While waiting, you should have also seen other debug lines go off describing how they failed.
 
 ## Player Help
 
-[The Boosters](https://www.notion.so/The-Boosters-28357e0d4afd81d1b4b6f69f4ea658bf?pvs=21)
+[The Boosters](https://www.notion.so/The-Boosters-2b657e0d4afd81a38e28db6fc5e6b0c6?pvs=21)
 
-[Config Options](https://www.notion.so/Config-Options-28357e0d4afd81e7b49ec62950b3830b?pvs=21)
+[Config Options](https://www.notion.so/Config-Options-2b657e0d4afd8170a34eddd790195168?pvs=21)
 
 ## Addon Dev Help
 
 ### Resource Pack Help
 
-[Translations](https://www.notion.so/Translations-28357e0d4afd8125bb04ea40b2eab54d?pvs=21)
+[Translations](https://www.notion.so/Translations-2b657e0d4afd81dcb7bbdf126d5a0346?pvs=21)
 
 ## Mod Dev Help
 
-[Events](https://www.notion.so/Events-28357e0d4afd8167805ee42b1e5a70d5?pvs=21)
-
-## Known Issues
-
-- v1.6.1-1.5.0 had set the event listeners to high priority, allowing other mods to override the results; notably running into [Fossil Tweaks](https://www.notion.so/Fossil-Tweaks-21d57e0d4afd8072ad0dcccb83f9fe2a?pvs=21)’s naive shiny rolling. v1.6.1-1.5.1 fixes this by deprioritizing the event listeners so they get last say.
-- v1.6.1-1.5.0 - v1.6.1-1.5.1 didn’t always play well with form name translations, so I’ve reverted them to the direct form name in v1.6.1-1.5.2.
-- v1.6.1-1.5.0 - v1.6.1-1.5.2 would stall out if you tried to use the reserve a spawning Pokémon for the player it spawned on feature. v1.6.1-1.5.3 fixes this.
+[Events](https://www.notion.so/Events-2b657e0d4afd810ba5e4f6d9088f2bd1?pvs=21)
 
 ## Roadmap
 
