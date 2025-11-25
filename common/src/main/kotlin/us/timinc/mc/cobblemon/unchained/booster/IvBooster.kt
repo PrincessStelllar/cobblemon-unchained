@@ -47,7 +47,7 @@ object IvBooster : AbstractBooster() {
     ) : SpawningInfluence {
         override fun affectAction(action: SpawnAction<*>) {
             if (action !is PokemonSpawnAction) return
-            val player = player ?: action.ctx.cause.entity as? ServerPlayer ?: return
+            val player = player ?: action.spawnablePosition.cause.entity as? ServerPlayer ?: return
 
             Runner(player, PokemonRepresentation.FromProperties(action.props), config) {
                 action.entity.subscribe { it.pokemon.reserveFor(player) }
