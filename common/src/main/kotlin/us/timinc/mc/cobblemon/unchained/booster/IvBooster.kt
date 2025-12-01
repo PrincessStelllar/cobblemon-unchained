@@ -5,13 +5,10 @@ import com.cobblemon.mod.common.api.events.CobblemonEvents
 import com.cobblemon.mod.common.api.events.pokemon.FossilRevivedEvent
 import com.cobblemon.mod.common.api.events.pokemon.HatchEggEvent
 import com.cobblemon.mod.common.api.events.pokemon.PokemonCapturedEvent
-import com.cobblemon.mod.common.api.spawning.BestSpawner.fishingSpawner
 import com.cobblemon.mod.common.api.spawning.detail.PokemonSpawnAction
 import com.cobblemon.mod.common.api.spawning.detail.SpawnAction
 import com.cobblemon.mod.common.api.spawning.influence.SpawningInfluence
-import com.cobblemon.mod.common.api.spawning.spawner.PlayerSpawnerFactory
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity
-import com.cobblemon.mod.common.platform.events.PlatformEvents
 import net.minecraft.server.level.ServerPlayer
 import net.minecraft.world.entity.Entity
 import us.timinc.mc.cobblemon.timcore.AbstractHandler
@@ -85,14 +82,9 @@ object IvBooster : AbstractBooster() {
     }
 
     override fun initialize() {
-        PlayerSpawnerFactory.influenceBuilders.add {
-            IvBoosterInfluence(
-                Unchained.ivSpawnBooster, it
-            )
-        }
-        PlatformEvents.SERVER_STARTED.subscribe(Priority.LOWEST) { _ ->
-            fishingSpawner.influences.add(IvBoosterInfluence(Unchained.ivFishBooster))
-        }
+        Unchained.registerPlayerSpawnerInfluence(IvBoosterInfluence(Unchained.ivSpawnBooster))
+        Unchained.registerFishingSpawnerInfluence(IvBoosterInfluence(Unchained.ivFishBooster))
+        Unchained.registerSnackSpawnerInfluence(IvBoosterInfluence(Unchained.ivSnackBooster))
         CobblemonEvents.HATCH_EGG_PRE.subscribe(Priority.LOWEST, IvEggHandler::handle)
         CobblemonEvents.FOSSIL_REVIVED.subscribe(Priority.LOWEST, IvFossilHandler::handle)
         CobblemonEvents.POKEMON_CAPTURED.subscribe(Priority.LOWEST, IvCaptureHandler::handle)

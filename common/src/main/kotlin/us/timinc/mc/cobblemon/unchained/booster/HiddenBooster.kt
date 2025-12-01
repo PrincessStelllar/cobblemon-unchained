@@ -96,14 +96,9 @@ object HiddenBooster : AbstractBooster() {
     }
 
     override fun initialize() {
-        PlayerSpawnerFactory.influenceBuilders.add {
-            HiddenBoosterInfluence(
-                Unchained.hiddenSpawnBooster, it
-            )
-        }
-        PlatformEvents.SERVER_STARTED.subscribe(Priority.LOWEST) { _ ->
-            fishingSpawner.influences.add(HiddenBoosterInfluence(Unchained.hiddenFishBooster))
-        }
+        Unchained.registerPlayerSpawnerInfluence(HiddenBoosterInfluence(Unchained.hiddenSpawnBooster))
+        Unchained.registerFishingSpawnerInfluence(HiddenBoosterInfluence(Unchained.hiddenFishBooster))
+        Unchained.registerSnackSpawnerInfluence(HiddenBoosterInfluence(Unchained.hiddenSnackBooster))
         CobblemonEvents.HATCH_EGG_PRE.subscribe(Priority.LOWEST, HiddenEggHandler::handle)
         CobblemonEvents.FOSSIL_REVIVED.subscribe(Priority.LOWEST, HiddenFossilHandler::handle)
         CobblemonEvents.POKEMON_CAPTURED.subscribe(Priority.LOWEST, HiddenCaptureHandler::handle)

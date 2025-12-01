@@ -34,6 +34,8 @@ object Unchained : AbstractMod<Unchained.UnchainedConfig>(MOD_ID, UnchainedConfi
         ConfigBuilder.load(HiddenBoosterConfig.Fish::class.java, "unchained/fish/hiddenFishBooster")
     var hiddenCaptureBooster: HiddenBoosterConfig =
         ConfigBuilder.load(HiddenBoosterConfig.Capture::class.java, "unchained/capture/hiddenCaptureBooster")
+    var hiddenSnackBooster: HiddenBoosterConfig =
+        ConfigBuilder.load(HiddenBoosterConfig.Snack::class.java, "unchained/snack/hiddenSnackBooster")
     var ivSpawnBooster: IvBoosterConfig =
         ConfigBuilder.load(IvBoosterConfig.Spawn::class.java, "unchained/spawn/ivSpawnBooster")
     var ivEggBooster: IvBoosterConfig =
@@ -44,6 +46,8 @@ object Unchained : AbstractMod<Unchained.UnchainedConfig>(MOD_ID, UnchainedConfi
         ConfigBuilder.load(IvBoosterConfig.Fish::class.java, "unchained/fish/ivFishBooster")
     var ivCaptureBooster: IvBoosterConfig =
         ConfigBuilder.load(IvBoosterConfig.Capture::class.java, "unchained/capture/ivCaptureBooster")
+    var ivSnackBooster: IvBoosterConfig =
+        ConfigBuilder.load(IvBoosterConfig.Snack::class.java, "unchained/snack/ivSnackBooster")
     var shinySpawnBooster: ShinyBoosterConfig =
         ConfigBuilder.load(ShinyBoosterConfig.Spawn::class.java, "unchained/spawn/shinySpawnBooster")
     var shinyEggBooster: ShinyBoosterConfig =
@@ -54,6 +58,8 @@ object Unchained : AbstractMod<Unchained.UnchainedConfig>(MOD_ID, UnchainedConfi
         ConfigBuilder.load(ShinyBoosterConfig.Fish::class.java, "unchained/fish/shinyFishBooster")
     var shinyCaptureBooster: ShinyBoosterConfig =
         ConfigBuilder.load(ShinyBoosterConfig.Capture::class.java, "unchained/capture/shinyCaptureBooster")
+    var shinySnackBooster: ShinyBoosterConfig =
+        ConfigBuilder.load(ShinyBoosterConfig.Snack::class.java, "unchained/snack/shinySnackBooster")
 
     object TranslationComponents {
         fun notify(type: String, species: Species, form: FormData): MutableComponent = Component.translatable(
@@ -90,6 +96,7 @@ object Unchained : AbstractMod<Unchained.UnchainedConfig>(MOD_ID, UnchainedConfi
                 ConfigBuilder.load(HiddenBoosterConfig.Fish::class.java, "unchained/fish/hiddenFishBooster")
             hiddenCaptureBooster =
                 ConfigBuilder.load(HiddenBoosterConfig.Capture::class.java, "unchained/capture/hiddenCaptureBooster")
+            hiddenSnackBooster = ConfigBuilder.load(HiddenBoosterConfig.Snack::class.java, "unchained/snack/hiddenSnackBooster")
             ivSpawnBooster = ConfigBuilder.load(IvBoosterConfig.Spawn::class.java, "unchained/spawn/ivSpawnBooster")
             ivEggBooster = ConfigBuilder.load(IvBoosterConfig.Egg::class.java, "unchained/egg/ivEggBooster")
             ivRezBooster =
@@ -97,6 +104,8 @@ object Unchained : AbstractMod<Unchained.UnchainedConfig>(MOD_ID, UnchainedConfi
             ivFishBooster = ConfigBuilder.load(IvBoosterConfig.Fish::class.java, "unchained/fish/ivFishBooster")
             ivCaptureBooster =
                 ConfigBuilder.load(IvBoosterConfig.Capture::class.java, "unchained/capture/ivCaptureBooster")
+            ivSnackBooster =
+                ConfigBuilder.load(IvBoosterConfig.Snack::class.java, "unchained/snack/ivSnackBooster")
             shinySpawnBooster =
                 ConfigBuilder.load(ShinyBoosterConfig.Spawn::class.java, "unchained/spawn/shinySpawnBooster")
             shinyEggBooster = ConfigBuilder.load(ShinyBoosterConfig.Egg::class.java, "unchained/egg/shinyEggBooster")
@@ -107,6 +116,8 @@ object Unchained : AbstractMod<Unchained.UnchainedConfig>(MOD_ID, UnchainedConfi
                 ConfigBuilder.load(ShinyBoosterConfig.Fish::class.java, "unchained/fish/shinyFishBooster")
             shinyCaptureBooster =
                 ConfigBuilder.load(ShinyBoosterConfig.Capture::class.java, "unchained/capture/shinyCaptureBooster")
+            shinySnackBooster =
+                ConfigBuilder.load(ShinyBoosterConfig.Snack::class.java, "unchained/snack/shinySnackBooster")
         }
     }
 }

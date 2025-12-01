@@ -71,4 +71,19 @@ abstract class IvBoosterConfig(key: String) : AbstractBoosterConfig(key) {
         override val thresholds: Map<Int, Float> = mapOf()
         override val breakStreakOnSuccess: Set<String> = setOf()
     }
+
+    class Snack : IvBoosterConfig("iv.snack") {
+        override val points = mapOf(
+            CAPTURE.type to mapOf(
+                STREAK.type to 1F,
+            ),
+        )
+        override val thresholds = mutableMapOf(
+            5 to 1F,
+            10 to 2F,
+            20 to 3F,
+            30 to 4F,
+        )
+        override val breakStreakOnSuccess: Set<String> = setOf()
+    }
 }
