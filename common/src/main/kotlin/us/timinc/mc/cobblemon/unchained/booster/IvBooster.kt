@@ -10,8 +10,10 @@ import com.cobblemon.mod.common.api.spawning.detail.PokemonSpawnAction
 import com.cobblemon.mod.common.api.spawning.detail.SpawnAction
 import com.cobblemon.mod.common.api.spawning.influence.SpawningInfluence
 import com.cobblemon.mod.common.api.spawning.spawner.PlayerSpawnerFactory
+import com.cobblemon.mod.common.entity.pokemon.PokemonEntity
 import com.cobblemon.mod.common.platform.events.PlatformEvents
 import net.minecraft.server.level.ServerPlayer
+import net.minecraft.world.entity.Entity
 import us.timinc.mc.cobblemon.timcore.AbstractHandler
 import us.timinc.mc.cobblemon.timcore.PokemonRepresentation
 import us.timinc.mc.cobblemon.timcore.reserveFor
@@ -45,13 +47,12 @@ object IvBooster : AbstractBooster() {
         private val config: IvBoosterConfig,
         private val player: ServerPlayer? = null,
     ) : SpawningInfluence {
-        override fun affectAction(action: SpawnAction<*>) {
-            if (action !is PokemonSpawnAction) return
+        override fun affectSpawn(action: SpawnAction<*>, entity: Entity) {
+            if (action !is PokemonSpawnAction || entity !is PokemonEntity) return
             val player = player ?: action.spawnablePosition.cause.entity as? ServerPlayer ?: return
+            val pokemonRep = PokemonRepresentation.FromEntity(entity)
 
-            Runner(player, PokemonRepresentation.FromProperties(action.props), config) {
-                action.entity.subscribe { it.pokemon.reserveFor(player) }
-            }.runThrough()
+            Runner(player, pokemonRep, config) { entity.pokemon.reserveFor(player) }.runThrough()
         }
     }
 
