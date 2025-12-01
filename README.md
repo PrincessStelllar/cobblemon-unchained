@@ -1,6 +1,6 @@
 # Unchained
 
-v1.7.0-1.6
+v1.7.1-1.7
 
 [Modrinth](https://modrinth.com/mod/cobblemon-unchained)
 
