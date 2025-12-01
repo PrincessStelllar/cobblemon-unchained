@@ -38,5 +38,12 @@ side = "BOTH"
 modId = "tim_core"
 mandatory = true
 versionRange = "[${tim_core_neoforge_version},)"
-ordering = "NONE"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.${modId}]]
+modId = "cobbled_counter"
+mandatory = true
+versionRange = "[${counter_neoforge_version},)"
+ordering = "AFTER"
 side = "BOTH"

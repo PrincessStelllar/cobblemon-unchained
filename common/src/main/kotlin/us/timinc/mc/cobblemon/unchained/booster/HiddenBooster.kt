@@ -10,8 +10,10 @@ import com.cobblemon.mod.common.api.spawning.detail.PokemonSpawnAction
 import com.cobblemon.mod.common.api.spawning.detail.SpawnAction
 import com.cobblemon.mod.common.api.spawning.influence.SpawningInfluence
 import com.cobblemon.mod.common.api.spawning.spawner.PlayerSpawnerFactory
+import com.cobblemon.mod.common.entity.pokemon.PokemonEntity
 import com.cobblemon.mod.common.platform.events.PlatformEvents
 import net.minecraft.server.level.ServerPlayer
+import net.minecraft.world.entity.Entity
 import us.timinc.mc.cobblemon.timcore.AbstractHandler
 import us.timinc.mc.cobblemon.timcore.PokemonRepresentation
 import us.timinc.mc.cobblemon.timcore.reserveFor
@@ -57,18 +59,12 @@ object HiddenBooster : AbstractBooster() {
         private val config: HiddenBoosterConfig,
         private val player: ServerPlayer? = null,
     ) : SpawningInfluence {
-        override fun affectAction(action: SpawnAction<*>) {
-            if (action !is PokemonSpawnAction) return
+        override fun affectSpawn(action: SpawnAction<*>, entity: Entity) {
+            if (action !is PokemonSpawnAction || entity !is PokemonEntity) return
             val player = player ?: action.spawnablePosition.cause.entity as? ServerPlayer ?: return
-            val pokemonRep = PokemonRepresentation.FromProperties(action.props)
+            val pokemonRep = PokemonRepresentation.FromEntity(entity)
 
-            Runner(
-                player,
-                pokemonRep,
-                config
-            ) {
-                action.entity.subscribe { it.pokemon.reserveFor(player) }
-            }.runThrough()
+            Runner(player, pokemonRep, config) { entity.pokemon.reserveFor(player) }.runThrough()
         }
     }
 
@@ -100,14 +96,9 @@ object HiddenBooster : AbstractBooster() {
     }
 
     override fun initialize() {
-        PlayerSpawnerFactory.influenceBuilders.add {
-            HiddenBoosterInfluence(
-                Unchained.hiddenSpawnBooster, it
-            )
-        }
-        PlatformEvents.SERVER_STARTED.subscribe(Priority.LOWEST) { _ ->
-            fishingSpawner.influences.add(HiddenBoosterInfluence(Unchained.hiddenFishBooster))
-        }
+        Unchained.registerPlayerSpawnerInfluence(HiddenBoosterInfluence(Unchained.hiddenSpawnBooster))
+        Unchained.registerFishingSpawnerInfluence(HiddenBoosterInfluence(Unchained.hiddenFishBooster))
+        Unchained.registerSnackSpawnerInfluence(HiddenBoosterInfluence(Unchained.hiddenSnackBooster))
         CobblemonEvents.HATCH_EGG_PRE.subscribe(Priority.LOWEST, HiddenEggHandler::handle)
         CobblemonEvents.FOSSIL_REVIVED.subscribe(Priority.LOWEST, HiddenFossilHandler::handle)
         CobblemonEvents.POKEMON_CAPTURED.subscribe(Priority.LOWEST, HiddenCaptureHandler::handle)
