@@ -17,7 +17,7 @@ abstract class HiddenBoosterConfig(key: String) : AbstractBoosterConfig(key) {
         override val thresholds = mapOf(
             99 to 1F,
         )
-        override val breakStreakOnSuccess: Set<String> = setOf(KO.type)
+        override val breakStreakOnSuccess: Set<String> = setOf()
     }
 
     class Fish : HiddenBoosterConfig("hidden.fish") {
@@ -30,7 +30,7 @@ abstract class HiddenBoosterConfig(key: String) : AbstractBoosterConfig(key) {
         override val thresholds = mapOf(
             99 to 1F,
         )
-        override val breakStreakOnSuccess: Set<String> = setOf(KO.type)
+        override val breakStreakOnSuccess: Set<String> = setOf()
     }
 
     class Egg : HiddenBoosterConfig("hidden.egg") {
@@ -64,6 +64,19 @@ abstract class HiddenBoosterConfig(key: String) : AbstractBoosterConfig(key) {
     class Capture : HiddenBoosterConfig("hidden.capture") {
         override val points: Map<String, Map<String, Float>> = mapOf()
         override val thresholds: Map<Int, Float> = mapOf()
+        override val breakStreakOnSuccess: Set<String> = setOf()
+    }
+
+    class Snack : HiddenBoosterConfig("hidden.snack") {
+        override val points: Map<String, Map<String, Float>> = mapOf(
+            KO.type to mapOf(
+                STREAK.type to 99F,
+                COUNT.type to 1F,
+            ),
+        )
+        override val thresholds = mapOf(
+            99 to 1F,
+        )
         override val breakStreakOnSuccess: Set<String> = setOf()
     }
 

@@ -17,7 +17,7 @@ abstract class ShinyBoosterConfig(key: String) : AbstractBoosterConfig(key) {
             300 to 2F,
             500 to 3F,
         )
-        override val breakStreakOnSuccess: Set<String> = setOf(KO.type)
+        override val breakStreakOnSuccess: Set<String> = setOf()
     }
 
     class Fish : ShinyBoosterConfig("shiny.fish") {
@@ -31,7 +31,7 @@ abstract class ShinyBoosterConfig(key: String) : AbstractBoosterConfig(key) {
             150 to 2F,
             300 to 3F,
         )
-        override val breakStreakOnSuccess: Set<String> = setOf(KO.type)
+        override val breakStreakOnSuccess: Set<String> = setOf()
     }
 
     class Egg : ShinyBoosterConfig("shiny.egg") {
@@ -45,7 +45,7 @@ abstract class ShinyBoosterConfig(key: String) : AbstractBoosterConfig(key) {
             150 to 2F,
             300 to 3F,
         )
-        override val breakStreakOnSuccess: Set<String> = setOf(HATCH.type)
+        override val breakStreakOnSuccess: Set<String> = setOf()
     }
 
     class Resurrection : ShinyBoosterConfig("shiny.resurrection") {
@@ -59,12 +59,26 @@ abstract class ShinyBoosterConfig(key: String) : AbstractBoosterConfig(key) {
             100 to 2F,
             200 to 3F,
         )
-        override val breakStreakOnSuccess: Set<String> = setOf(RESURRECTION.type)
+        override val breakStreakOnSuccess: Set<String> = setOf()
     }
 
     class Capture : ShinyBoosterConfig("shiny.capture") {
         override val points: Map<String, Map<String, Float>> = mapOf()
         override val thresholds: Map<Int, Float> = mapOf()
+        override val breakStreakOnSuccess: Set<String> = setOf()
+    }
+
+    class Snack : ShinyBoosterConfig("shiny.snack") {
+        override val points = mapOf(
+            KO.type to mapOf(
+                STREAK.type to 1F,
+            ),
+        )
+        override val thresholds = mutableMapOf(
+            100 to 1F,
+            300 to 2F,
+            500 to 3F,
+        )
         override val breakStreakOnSuccess: Set<String> = setOf()
     }
 }
